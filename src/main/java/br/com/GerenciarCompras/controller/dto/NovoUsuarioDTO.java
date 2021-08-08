@@ -2,11 +2,9 @@ package br.com.GerenciarCompras.controller.dto;
 
 import javax.validation.constraints.NotBlank;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import br.com.GerenciarCompras.model.bean.User;
 
-@Data
-@NoArgsConstructor
+
 public class NovoUsuarioDTO {
 	
 	@NotBlank
@@ -25,5 +23,9 @@ public class NovoUsuarioDTO {
 	}
 	public void setPassword(String password) {
 		this.password = password;
+	}
+	
+	public User toUser() {
+		return new User(this.username, this.password, false);
 	}
 }

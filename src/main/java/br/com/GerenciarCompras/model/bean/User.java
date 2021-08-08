@@ -4,6 +4,13 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name="users")
 public class User {
@@ -12,6 +19,15 @@ public class User {
 	private String username;
 	private String password;
 	private boolean enabled;
+	
+	public User() { }
+
+	public User(String username, String password, boolean enabled) {
+		super();
+		this.username = username;
+		this.password = password;
+		this.enabled = enabled;
+	}
 	
 	public String getUsername() {
 		return username;
