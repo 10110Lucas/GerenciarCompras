@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+	<head>
+		<meta charset="UTF-8">
+		
+		<!-- Bootstrap v4.6 -->
+		<link th:replace="~{lucpacks :: BootstrapV46}"/>
+		
+		<title>Lista de Usuarios</title>
+	</head>
+	<body>
+		
+		<nav th:replace="~{lucpacks :: barraTopo}"></nav>
+		
+		<div class="container">
+			<div class="card mt-5">
+				<div class="card-body">
+					<div class="row">
+						<div class="col">
+							<span>Nome</span>
+						</div>
+						<div class="col">
+							<span>Data</span>
+						</div>
+					</div>
+					<div class="row" th:each="user : ${usuarios}">
+						<div class="col">
+							<span th:text="${user.username}"></span>
+						</div>
+						<div class="col">
+							<span th:text="${#temporals.format(user.dataCriacao, 'dd/MM/yyyy HH:mm')}"></span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<!-- Bootstrap v4.6 -->
+		<script th:replace="~{lucpacks :: ScriptBootstrapV46L1}"></script>
+		<script th:replace="~{lucpacks :: ScriptBootstrapV46L2}"></script>
+	</body>
+</html>

@@ -24,22 +24,22 @@ public class UsuarioController {
 	private UserService userService;
 	
 	@GetMapping
-	public void listar(Model model) {
+	public String listar(Model model) {
 		List<User> usuarios = userService.listar();
-		usuarios.forEach(user -> System.out.println("Usuario: "+user.getUsername()));
-//		model.addAllAttributes(usuarios);
+		model.addAttribute("usuarios", usuarios);
+		return "usuario/listaUsuarios";
 	}
 
 	@GetMapping("novo-usuario")
 	public String acessarFormulario(Model model) {
 		model.addAttribute("novoUsuarioDTO", new NovoUsuarioDTO());
-		return "newUsuario";
+		return "usuario/newUsuario";
 	}
 	
 	@PostMapping
 	public String cadastrar(@Valid NovoUsuarioDTO req, BindingResult result) {
 		if (result.hasErrors()) {
-			return "newUsuario";
+			return "usuario/newUsuario";
 		}
 		userService.criarUsuario(req.toUser());
 		return "login";
