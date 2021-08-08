@@ -1,5 +1,7 @@
 package br.com.GerenciarCompras.controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import br.com.GerenciarCompras.controller.dto.NovoUsuarioDTO;
+import br.com.GerenciarCompras.model.bean.User;
 import br.com.GerenciarCompras.service.UserService;
 
 @Controller
@@ -19,6 +22,13 @@ public class UsuarioController {
 	
 	@Autowired
 	private UserService userService;
+	
+	@GetMapping
+	public void listar(Model model) {
+		List<User> usuarios = userService.listar();
+		usuarios.forEach(user -> System.out.println("Usuario: "+user.getUsername()));
+//		model.addAllAttributes(usuarios);
+	}
 
 	@GetMapping("novo-usuario")
 	public String acessarFormulario(Model model) {

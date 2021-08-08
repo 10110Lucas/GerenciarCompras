@@ -1,5 +1,7 @@
 package br.com.GerenciarCompras.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,5 +16,9 @@ public class UserService {
 	
 	public void criarUsuario(User user) {
 		userRepository.save(user);
+	}
+	
+	public List<User> listar() {
+		return userRepository.findAll();
 	}
 }
