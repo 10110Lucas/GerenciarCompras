@@ -2,6 +2,11 @@ package br.com.GerenciarCompras.controller.dto;
 
 import javax.validation.constraints.NotBlank;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@NoArgsConstructor
 public class NovoUsuarioDTO {
 	
 	@NotBlank
