@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+	<head>
+		<meta charset="UTF-8">
+		
+		<!-- Bootstrap v4.6 -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+		
+		<title>Insert title here</title>
+	</head>
+	<body>
+	
+		<nav th:replace="~{lucpacks :: barraTopo}">
+		</nav>
+		
+		<div class="container mt-1">
+			<div class="card mt-3">
+				<form th:object="${requisicaoNovoPedido}" class="card-body" th:action="@{/usuario/novo}" method="POST">
+					<div class="form-group">
+						<label for="nomeProduto">Produto</label>
+						<input class="form-control" th:errorclass="is-invalid" th:field="*{nomeProduto}" placeholder="nome do produto"/>
+						<small>Informe o nome do produto.</small>
+						<div class="invalid-feedback" th:errors="*{nomeProduto}">
+							Erros do nome do prduto
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="urlProduto">Url</label>
+						<input class="form-control" th:errorclass="is-invalid" th:field="*{urlProduto}" placeholder="url do produto"/>
+						<small>Procure em um site o produto que você deseja e cole a url da página aqui.</small>
+						<div class="invalid-feedback" th:errors="*{urlProduto}">
+							Erros da url do produto
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="urlImagem">Imagem</label>
+						<input class="form-control" th:errorclass="is-invalid" th:field="*{urlImagem}" placeholder="url da imagem"/>
+						<small>Copie a url de uma boa imagem do produto e cole aqui para ajudar a conseguir compradores.</small>
+						<div class="invalid-feedback" th:errors="*{urlImagem}">
+							Erros da url da imagem
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="descricao">Descrição</label>
+						<textarea class="form-control" th:field="*{descricao}" placeholder="Adicione detalhes importantes para ajudar o comprador"></textarea>
+					</div>
+					<button class="btn btn-primary" type="submit">Cadastrar</button>
+				</form>
+			</div>
+		</div>
+			
+		<!-- Script Bootstrap v4.6 -->
+		<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+	</body>
+</html>
